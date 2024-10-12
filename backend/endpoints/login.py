@@ -18,6 +18,11 @@ def login():
 
     # Verificar si el usuario existe y si la contraseña coincide
     if usuario and usuario.password == password:
-        return jsonify({"message": "Login exitoso", "rol": usuario.rol, "status": "success"}), 200
+        return jsonify({
+            "message": "Login exitoso",
+            "rol": usuario.rol,
+            "id": usuario.id,  # Agregamos el ID del usuario a la respuesta
+            "status": "success"
+        }), 200
     else:
         return jsonify({"message": "Email o contraseña incorrectos", "status": "error"}), 401
